@@ -15,11 +15,13 @@ class IndecisionApp extends React.Component {
       };
     });
   }
+
   handlePick() {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
     const option = this.state.options[randomNum];
     alert(option);
   };
+
   handleAddOption(option) {
     if (!option) { //only going to run if there is an empty string
       return 'Enter valid value to add item';
@@ -33,6 +35,7 @@ class IndecisionApp extends React.Component {
       };
     });
   }
+  
   render() {
     const title = 'Indecision';
     const subtitle = 'Put your life in the hands of a computer';
