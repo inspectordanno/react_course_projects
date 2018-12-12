@@ -6,9 +6,34 @@ class IndecisionApp extends React.Component {
     this.handleAddOption = this.handleAddOption.bind(this);
     this.handleDeleteOption = this.handleDeleteOption.bind(this);
     this.state = {
-      options: props.options
+      options: []
     };
   }
+
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem('options');
+      const options = JSON.parse(json);
+
+      if (options) {
+        this.setState(() => ({ options }));
+      }
+    } catch (e) {
+      //do nothing at all
+    }
+    
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem('options', json);
+    }
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount')
+  }
+
+  //old syntax
   // handleDeleteOptions() {
   //   this.setState(() => {
   //     return {
@@ -34,15 +59,14 @@ class IndecisionApp extends React.Component {
     alert(option);
   };
 
- 
-
   handleAddOption(option) {
     if (!option) { //only going to run if there is an empty string
       return 'Enter valid value to add item';
-    } else if (this.state.options.indexOf(option) > -1) {
+    } else if (this.state.options.indexOf(option) > -1) { //runs if option exits (index value is 0 or greater)
       return 'This option already exists';
     } //if either if these conditions are met the function stops
 
+    //old syntax
     // this.setState((prevState) => {
     //   return {
     //     options: prevState.options.concat(option)
@@ -78,10 +102,6 @@ class IndecisionApp extends React.Component {
   }
 }
 
-IndecisionApp.defaultProps = {
-  options: []
-};
-
 const Header = props => {
   return (
     <div>
@@ -111,6 +131,7 @@ const Options = props => {
   return (
     <div>
       <button onClick={props.handleDeleteOptions}>Remove All</button>
+      {props.options.length === 0 && <p>Please add an option to get started!</p>}
       {
         props.options.map((option) => (
           <Option 
@@ -143,7 +164,7 @@ class AddOption extends React.Component {
   constructor(props) {
     super(props)
     this.handleAddOption = this.handleAddOption.bind(this);
-    this.state = {
+    this.state = { //by default there will be no error
       error: undefined
     }
   }
@@ -152,8 +173,13 @@ class AddOption extends React.Component {
 
     const option = e.target.elements.option.value.trim(); //trims empty spaces
 
-    const error = this.props.handleAddOption(option);
+    const error = this.props.handleAddOption(option); //error value
 
+    if (!error) {
+      e.target.elements.option.value = '';
+    }
+
+    //old syntax
     // this.setState(() => {
     //   return {
     //     error //es6 object shorthand, same as error:error
@@ -161,10 +187,10 @@ class AddOption extends React.Component {
     // })
 
     //new syntax
-    this.setState(() => ({error}));
+    this.setState(() => ({error})); //the new state is set to the error value up above
   }
   render() {
-    return (
+    return ( //if error is truthy, render the error
       <div>
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.handleAddOption}>
