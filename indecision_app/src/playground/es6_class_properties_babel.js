@@ -1,10 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import IndecisionApp from './components/IndecisionApp';
-
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
-
-console.log('hello')
+//Old syntax (ES6)
 
 class OldSyntax {
   constructor() {
@@ -20,7 +14,7 @@ const oldSyntax = new OldSyntax();
 const getGreeting = oldSyntax.getGreeting;
 console.log(getGreeting());
 
-// -------
+//New syntax (Babel class properties plugin)
 
 class NewSyntax {
   name = 'Jen';

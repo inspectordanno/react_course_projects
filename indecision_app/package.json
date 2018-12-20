@@ -5,7 +5,7 @@
   "author": "Danno",
   "license": "MIT",
   "scripts": {
-    "serve": "webpack-dev-server --mode development --contentBase './public' --devtool cheap-module-eval-source-map" ,
+    "serve": "webpack-dev-server --mode development --contentBase './public' --devtool cheap-module-eval-source-map",
     "build": "webpack --mode production"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
