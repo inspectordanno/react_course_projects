@@ -4,5 +4,3 @@ import IndecisionApp from './components/IndecisionApp';
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
-console.log('hello')
-
