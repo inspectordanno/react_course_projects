@@ -19,7 +19,7 @@ console.log(getGreeting());
 class NewSyntax {
   name = 'Jen';
   getGreeting = () => {
-    return `Hi my name is ${this.name}.`;
+    return `Hi my name is ${this.name}.`; //arrow function's this context is the instance
   }
 }
 
