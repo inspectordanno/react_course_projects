@@ -5,7 +5,7 @@
   "author": "Danno",
   "license": "MIT",
   "scripts": {
-    "serve": "webpack-dev-server --mode development --contentBase './public' --devtool cheap-module-eval-source-map",
+    "serve": "webpack-dev-server --open --mode development --contentBase './public' --devtool cheap-module-eval-source-map",
     "build": "webpack --mode production"
   },
   "dependencies": {
