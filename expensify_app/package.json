@@ -1,11 +1,11 @@
 {
-  "name": "indecision_app",
+  "name": "expensify",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Danno",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development --contentBase './public' --devtool cheap-module-eval-source-map",
+    "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-modal": "^3.8.1",
+    "react-router-dom": "^4.3.1",
     "validator": "^10.9.0"
   },
   "devDependencies": {
