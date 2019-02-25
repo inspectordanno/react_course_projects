@@ -33,7 +33,7 @@ const { name: publisherName = 'Self-published'} = book.publisher;
 
 console.log(publisherName);
 
-Array destructuring
+// Array destructuring
 
 const address = ['1299 S Juniper Street', 'Philadelphia', 'Pennsylvania', '19147'];
 
