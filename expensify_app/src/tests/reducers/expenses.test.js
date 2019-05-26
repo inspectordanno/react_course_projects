@@ -1,5 +1,4 @@
 import expensesReducer from '../../reducers/expenses';
-import { finished } from 'stream';
 import expenses from '../fixtures/expenses';
 import moment from 'moment';
 
@@ -68,4 +67,3 @@ test('should not edit expense if expense not found', () => {
   const state = expensesReducer(expenses, action);
   expect(state).toEqual(expenses);
 });
-
